@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nuance</title>
+<meta name="description" content="Nuance is a 3D world where your AI coding agents work in real terminal windows. Early alpha for macOS.">
+<meta property="og:title" content="Nuance">
+<meta property="og:description" content="Nuance is a 3D world where your AI coding agents work in real terminal windows. Early alpha for macOS.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:,">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #0f172a;
+    --muted: #475569;
+    --border: #e2e8f0;
+    --accent: #0284c7;
+    --accent-fg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b1220;
+      --fg: #e2e8f0;
+      --muted: #94a3b8;
+      --border: #1e293b;
+      --accent: #38bdf8;
+      --accent-fg: #0b1220;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  header.top {
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+  header.top .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .brand { font-weight: 800; font-size: 18px; }
+  nav a {
+    color: var(--fg);
+    text-decoration: none;
+    margin-left: 18px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  nav a:first-child { margin-left: 0; }
+  section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h1 { font-size: 30px; line-height: 1.25; margin: 0 0 16px; }
+  h2 { font-size: 22px; margin: 0 0 16px; }
+  p.sub { color: var(--muted); font-size: 16px; margin: 0 0 24px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-fg); }
+  .btn-secondary { background: transparent; color: var(--fg); border-color: var(--border); }
+  .btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  .price-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .price-card h3 { margin: 0 0 4px; font-size: 18px; }
+  .price-line { font-size: 28px; font-weight: 800; margin: 8px 0; }
+  .price-cap { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
+  .price-card ul { margin: 0 0 20px; padding-left: 20px; }
+  .price-card li { margin-bottom: 8px; }
+  .pro-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  form#form-vip-waitlist { display: flex; flex-direction: column; gap: 10px; max-width: 420px; }
+  input[type="email"] {
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0 14px;
+    font-size: 16px;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  p.disclaimer { color: var(--muted); font-size: 13px; margin: 4px 0 0; }
+  #waitlist-feedback-msg { font-size: 14px; font-weight: 600; margin-top: 4px; }
+  dl.faq dt { font-weight: 700; margin-top: 16px; }
+  dl.faq dd { margin: 4px 0 0; color: var(--muted); }
+  footer.bottom { padding: 32px 0; }
+  footer.bottom .links a { color: var(--fg); margin-right: 16px; font-size: 14px; }
+  footer.bottom p { color: var(--muted); font-size: 13px; margin: 12px 0 0; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">Nuance</div>
+    <nav>
+      <a href="#gia">Founder Pass</a>
+      <a href="#danh-sach-cho" id="nav-danh-sach-cho" hidden data-cho="waitlist">Waitlist</a>
+      <a href="#hoi-dap">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="wrap">
+    <h1>What If Managing 20 AI Coders Felt Like Playing a Game?</h1>
+    <p class="sub">Nuance is a 3D world where your AI coding agents work in real terminal windows, so you can see who is doing what. Early alpha for macOS. Linux is planned.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#gia">Get the Founder Pass</a>
+      <a class="btn btn-secondary" href="#danh-sach-cho" id="hero-danh-sach-cho" hidden data-cho="waitlist">Join the waitlist</a>
+    </div>
+  </div>
+</section>
+
+<section id="gia">
+  <div class="wrap">
+    <h2>Founder Pass</h2>
+    <div class="price-card">
+      <h3>Founder Pass</h3>
+      <p class="price-line">$129 one-time</p>
+      <ul>
+        <li>Lifetime access to every Nuance release through a private repository with the alpha build (macOS first, Linux when verified).</li>
+        <li>A private founders channel on Discord with Jack and the core builders.</li>
+        <li>Your name in FOUNDERS.md inside the repository, if you opt in.</li>
+        <li>100% money-back guarantee within 30 days of purchase.</li>
+      </ul>
+      <button type="button" id="btn-pay-founder" class="btn btn-primary btn-payment-trigger" disabled>Opening soon</button>
+      <p id="buy-note" style="font-size:0.85em;color:var(--muted);margin-top:6px;">Checkout opens soon.</p>
+    </div>
+    <div class="pro-card">
+      <div>
+        <strong>Pro</strong>: $12 per month. Coming soon.
+      </div>
+      <button type="button" class="btn btn-secondary" disabled>Coming soon</button>
+    </div>
+  </div>
+</section>
+
+<section id="danh-sach-cho" hidden data-cho="waitlist">
+  <div class="wrap">
+    <h2>Get notified when the alpha opens</h2>
+    <form id="form-vip-waitlist" onsubmit="event.preventDefault(); window.xuLyDangKyWaitlist && window.xuLyDangKyWaitlist(event);">
+      <input type="text" name="website" id="waitlist-website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <input type="email" id="waitlist-email-input" placeholder="you@example.com" required />
+      <button type="submit" id="btn-submit-waitlist" class="btn btn-primary">Notify me</button>
+      <p class="disclaimer">We will only email you about releases and critical security updates.</p>
+      <div id="waitlist-feedback-msg" style="display:none;"></div>
+    </form>
+  </div>
+</section>
+
+<section id="hoi-dap">
+  <div class="wrap">
+    <h2>FAQ</h2>
+    <dl class="faq">
+      <dt>Is Nuance finished?</dt>
+      <dd>No. It is an early alpha, so expect rough edges.</dd>
+      <dt>What do I need to run it?</dt>
+      <dd>A Mac with Node.js and tmux installed. Linux is planned.</dd>
+      <dt>Can I get a refund?</dt>
+      <dd>Yes, within 30 days of purchase. See the <a href="phap-ly/hoan-tien.html">refund policy</a>.</dd>
+    </dl>
+  </div>
+</section>
+
+<footer class="bottom">
+  <div class="wrap">
+    <div class="links">
+      <a href="phap-ly/dieu-khoan.html">Terms</a>
+      <a href="phap-ly/rieng-tu.html">Privacy</a>
+      <a href="phap-ly/hoan-tien.html">Refunds</a>
+    </div>
+    <p>Contact: contact@nuanceera.com</p>
+    <p>© Nuance</p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="trang-ban.js"></script>
+</body>
+</html>
